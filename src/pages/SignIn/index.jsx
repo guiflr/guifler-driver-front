@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import '../../index.css'
+import { useNavigate } from 'react-router-dom'
+
 import { Background } from '../../components/Background'
 import { Card } from '../../components/Card'
 import { Input } from '../../components/Input'
@@ -10,6 +12,7 @@ import { getFieldsValue, validator } from './controller'
 
 export function SignIn () {
   const addToast = useToastData(state => state.addToast)
+  const navigate = useNavigate()
 
   const [hasError, setHasError] = useState({})
   const [isLoading, setIsLoading] = useState(false)
@@ -33,6 +36,8 @@ export function SignIn () {
     }
 
     setIsLoading(false)
+
+    
   }
 
   async function fetchLogin ({ email, password }) {
@@ -48,6 +53,7 @@ export function SignIn () {
 
     addToast({ content: response.success, type: 'success' })
     setIsLoading(false)
+    navigate('/usuarios')
   }
 
   return (

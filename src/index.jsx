@@ -4,11 +4,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import { ToastContextProvider } from './context/ToastProvider'
 import { SignIn } from './pages/SignIn'
+import { Users } from './pages/Users'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <SignIn />
+  },
+  {
+    path: '/usuarios',
+    element: <Users />
   }
 ])
 
