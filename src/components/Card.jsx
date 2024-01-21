@@ -1,15 +1,9 @@
-import { Button } from './Button'
-
-export function Card ({ children, title, sizeFull, hasButton, onClick }) {
+export function Card ({ children }) {
   return (
-    <div
-      class={`${sizeFull ? 'w-3/5' : 'w-96'} bg-gray-900 rounded p-6 space-y-4`}
-    >
-      <div class='flex justify-between items-center'>
-        <h2 class='text-xl font-bold text-white'>{title}</h2>
-        {hasButton && <Button text="Adicionar" class="px-8" onClick={() => onClick()}/>}
+    <div class='dark max-w-2xl mx-auto'>
+      <div class='p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-70'>
+        {children}
       </div>
-      {children}
     </div>
   )
 }

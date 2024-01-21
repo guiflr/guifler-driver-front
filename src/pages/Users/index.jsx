@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Background } from '../../components/Background'
-import { Card } from '../../components/Card'
+import { Container } from '../../components/Container'
 import { List } from '../../components/List'
 import { userGetData } from '../../data/userData'
 import { useNavigate } from 'react-router-dom'
@@ -12,11 +12,10 @@ export function Users () {
   useEffect(() => {
     userData.execute()
   }, [])
-  console.log('userData', userData)
 
   return (
     <Background>
-      <Card
+      <Container
         title={'Usuários'}
         sizeFull
         hasButton
@@ -30,7 +29,7 @@ export function Users () {
             Nenhum usuário cadastrado
           </p>
         )}
-      </Card>
+      </Container>
     </Background>
   )
 }

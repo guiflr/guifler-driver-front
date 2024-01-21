@@ -3,7 +3,7 @@ import '../../index.css'
 import { useNavigate } from 'react-router-dom'
 
 import { Background } from '../../components/Background'
-import { Card } from '../../components/Card'
+import { Container } from '../../components/Container'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { makeLogin } from '../../controllers/makeLogin'
@@ -56,7 +56,7 @@ export function SignIn () {
 
   return (
     <Background>
-      <Card title={'Login'}>
+      <Container title={'Login'}>
         <form onSubmit={handleSubmit}>
           <Input
             id='email'
@@ -75,7 +75,7 @@ export function SignIn () {
           />
           <Button text={'Entrar'} type={'submit'} isLoading={isLoading} />
         </form>
-      </Card>
+      </Container>
     </Background>
   )
 }
