@@ -36,8 +36,6 @@ export function SignIn () {
     }
 
     setIsLoading(false)
-
-    
   }
 
   async function fetchLogin ({ email, password }) {

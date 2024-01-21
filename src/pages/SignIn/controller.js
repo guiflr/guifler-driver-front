@@ -24,7 +24,5 @@ export function validator (data) {
 
   const hasError = Object.values(fields).find(value => value)
 
-  console.log({ fieldsError: fields, hasError })
-
   return { fieldsError: fields, hasError }
 }
