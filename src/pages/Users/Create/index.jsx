@@ -8,9 +8,11 @@ import { Select } from '../../../components/Select'
 import { AddUserSchema, validator } from './controller'
 import { useToastData } from '../../../data/zustand'
 import { createUser } from '../../../controllers/createUser'
+import { useNavigate } from 'react-router-dom'
 
 export function CreateUser () {
   const addToast = useToastData(state => state.addToast)
+  const navigate = useNavigate()
 
   const [hasError, setHasError] = useState({})
   const [isLoading, setIsLoading] = useState()
@@ -49,6 +51,7 @@ export function CreateUser () {
         addToast({ content: response.error, type: 'error' })
       } else {
         addToast({ content: 'Usuário cadastrado', type: 'success' })
+        navigate('/usuarios')
       }
     }
 
