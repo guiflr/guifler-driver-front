@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export function Input ({ value, placeholder, type, onChange, id, name, error, required}) {
   const handleChange = e => {
@@ -19,7 +19,7 @@ export function Input ({ value, placeholder, type, onChange, id, name, error, re
         name={name}
         onChange={handleChange}
       />
-      {required && error && <p class="text-red-500 text-xs italic">{`${placeholder} é obrigatório.`}</p>}
+      {required && error && <p class="text-red-500 text-xs italic">{error}</p>}
     </div>
   )
 }
