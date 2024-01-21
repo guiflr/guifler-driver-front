@@ -9,22 +9,22 @@ export function getFieldsValue (form) {
   return { password, email }
 }
 
-
 export function validator (data) {
   const keys = Object.keys(data)
 
-  const fields = new Map()
+  const fields = {}
 
   keys.forEach(key => {
     if (data[key] === '') {
-      fields.set([key], true)
+      fields[key] = true
     } else {
-      fields.set([key], false)
+      fields[key] = false
     }
   })
 
-  const hasError =  Object.values(fields).find(value => value)
+  const hasError = Object.values(fields).find(value => value)
 
+  console.log({ fieldsError: fields, hasError })
 
-  return { fieldsError: fields, hasError}
+  return { fieldsError: fields, hasError }
 }
