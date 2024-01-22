@@ -71,7 +71,14 @@ export function UpdateUser () {
 
   return (
     <Background>
-      <Container title={'Atualizar usuário'} sizeFull>
+      <Container
+        title={'Atualizar usuário'}
+        sizeFull
+        hasButton
+        buttonTitle={'Voltar'}
+        onClick={() => navigate('/usuarios')}
+        param
+      >
         <Card>
           <form onSubmit={event => handleSubmit(event)}>
             <Input

@@ -7,6 +7,7 @@ import { SignIn } from './pages/SignIn'
 import { Users } from './pages/Users'
 import { CreateUser } from './pages/Users/Create'
 import { UpdateUser } from './pages/Users/Update'
+import { Documents } from './pages/Documents'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/usuarios/:id',
     element: <UpdateUser />
+  },
+  {
+    path: '/documentos/',
+    element: <Documents />
   }
 ])
 

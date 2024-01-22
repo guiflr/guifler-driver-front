@@ -66,7 +66,13 @@ export function CreateUser () {
 
   return (
     <Background>
-      <Container title={'Adicionar usuário'} sizeFull>
+      <Container
+        title={'Adicionar usuário'}
+        sizeFull
+        hasButton
+        buttonTitle={'Voltar'}
+        onClick={() => navigate('/usuarios')}
+      >
         <Card>
           <form onSubmit={event => handleSubmit(event)}>
             <Input
