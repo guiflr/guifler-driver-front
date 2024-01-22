@@ -19,10 +19,11 @@ export function Users () {
         title={'Usuários'}
         sizeFull
         hasButton
+        buttonTitle={'Adicionar'}
         onClick={() => navigate('/usuarios/adicionar')}
       >
         {userData.data.map(user => (
-          <List user={user} />
+          <List user={user} onClick={() => navigate(`/usuarios/${user.id}`)}/>
         ))}
         {!userData.data.length && (
           <p class='text-white flex justify-center'>

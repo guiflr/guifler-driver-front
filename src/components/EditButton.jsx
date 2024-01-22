@@ -1,6 +1,9 @@
-export function EditButton () {
+export function EditButton ({ onClick }) {
   return (
-    <button class='flex p-2.5 bg-blue-600 rounded-xl transition-all duration-300 text-white'>
+    <button
+      class='flex p-2.5 bg-blue-600 rounded-xl transition-all duration-300 text-white'
+      onClick={onClick}
+    >
       <svg
         xmlns='http://www.w3.org/2000/svg'
         class='h-6 w-6'

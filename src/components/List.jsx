@@ -8,7 +8,7 @@ const roles = {
   creator: 'Criador'
 }
 
-export function List ({ user }) {
+export function List ({ user, onClick }) {
   const { username, email, role } = user
 
   return (
@@ -29,7 +29,7 @@ export function List ({ user }) {
                 {roles[role]}
               </div>
               <div class='inline-flex items-center text-base font-semibold text-gray-900 dark:text-white'>
-                <EditButton />
+                <EditButton onClick={onClick} />
               </div>
             </div>
           </li>

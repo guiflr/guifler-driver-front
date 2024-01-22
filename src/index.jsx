@@ -6,6 +6,7 @@ import { ToastContextProvider } from './context/ToastProvider'
 import { SignIn } from './pages/SignIn'
 import { Users } from './pages/Users'
 import { CreateUser } from './pages/Users/Create'
+import { UpdateUser } from './pages/Users/Update'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/usuarios/adicionar',
     element: <CreateUser />
+  },
+  {
+    path: '/usuarios/:id',
+    element: <UpdateUser />
   }
 ])
 

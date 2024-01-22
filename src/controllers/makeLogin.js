@@ -8,6 +8,10 @@ export async function makeLogin ({ email, password }) {
 
     return { success: 'Bem vindo!' }
   } catch (err) {
+    if (!err.response?.status) {
+      return { error: 'Serviço indisponível' }
+    }
+
     if (err.response.status === 401) {
       return { error: 'Email ou senha inválidos.' }
     }
@@ -19,5 +23,7 @@ export async function makeLogin ({ email, password }) {
     if (err.response.status === 404) {
       return { error: 'Requisição inválida.' }
     }
+
+    return { error: 'Serviço indisponível' }
   }
 }
