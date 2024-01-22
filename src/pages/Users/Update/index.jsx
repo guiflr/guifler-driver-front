@@ -5,11 +5,12 @@ import { Card } from '../../../components/Card'
 import { Input } from '../../../components/Input'
 import { Button } from '../../../components/Button'
 import { Select } from '../../../components/Select'
-// import { AddUserSchema, validator } from './controller'
 import { useToastData } from '../../../data/zustand'
 import { createUser } from '../../../controllers/createUser'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getUser } from '../../../controllers/getUser'
+import { validator } from './controller'
+import { updateUser } from '../../../controllers/updateUser'
 
 export function UpdateUser () {
   const addToast = useToastData(state => state.addToast)
@@ -31,34 +32,35 @@ export function UpdateUser () {
   }, [])
 
   async function handleSubmit (event) {
-    // setHasError({})
-    // setIsLoading(true)
-    // event.preventDefault()
-    // const form = new FormData(event.currentTarget)
-    // const role = document.getElementById('role').value
-    // const userData = form.entries()
-    // const user = {}
-    // for (const [key, value] of userData) {
-    //   user[key] = value === '' ? null : value
-    // }
-    // user.role = role
-    // const { success, errors } = validator(user)
-    // if (errors) {
-    //   setHasError(errors)
-    //   if (errors['passwordNotMath']) {
-    //     addToast({ content: errors['passwordNotMath'], type: 'error' })
-    //   }
-    // }
-    // if (success) {
-    //   const response = await createUser(user)
-    //   if (response.error) {
-    //     addToast({ content: response.error, type: 'error' })
-    //   } else {
-    //     addToast({ content: 'Usuário cadastrado', type: 'success' })
-    //     navigate('/usuarios')
-    //   }
-    // }
-    // setIsLoading(false)
+    setHasError({})
+    setIsLoading(true)
+
+    event.preventDefault()
+    const form = new FormData(event.currentTarget)
+    const role = document.getElementById('role').value
+    const userData = form.entries()
+
+    const userFields = {}
+    for (const [key, value] of userData) {
+      userFields[key] = value === '' ? null : value
+    }
+    userFields.role = role
+    const { success, errors } = validator(userFields)
+
+    if (errors) {
+      setHasError(errors)
+    }
+
+    if (success) {
+      const response = await updateUser({ ...userFields }, param.id)
+      if (response.error) {
+        addToast({ content: response.error, type: 'error' })
+      } else {
+        addToast({ content: 'Usuário atualizado', type: 'success' })
+        navigate('/usuarios')
+      }
+    }
+    setIsLoading(false)
   }
 
   const roleOptions = [
@@ -79,6 +81,7 @@ export function UpdateUser () {
               value={user.email}
               required={true}
               error={hasError['email']}
+              onChange={event => setUser(old => ({ ...old, email: event }))}
             />
             <Input
               placeholder={'Nome de usuário'}
@@ -87,6 +90,7 @@ export function UpdateUser () {
               value={user.username}
               required={true}
               error={hasError['username']}
+              onChange={value => setUser(old => ({ ...old, username: value }))}
             />
             <Select
               placeholder={'Nível'}
@@ -96,6 +100,7 @@ export function UpdateUser () {
               options={roleOptions}
               value={user.role}
               id={'role'}
+              onChange={value => setUser(old => ({ ...old, role: value }))}
             />
             <Button
               text={'Salvar'}
