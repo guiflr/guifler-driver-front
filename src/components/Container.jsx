@@ -14,7 +14,7 @@ export function Container ({
     <div
       class={`${sizeFull ? 'w-3/5' : 'w-96'} bg-gray-900 rounded p-6 space-y-4`}
     >
-      <div class='flex justify-between items-center'>
+      <div class='dark flex justify-between items-center'>
         <DropdownText title={title} />
         {hasButton && (
           <Button
